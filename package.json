@@ -1,0 +1,12 @@
+{
+  "name": "api-payquick",
+  "version": "1.0.0",
+  "description": "API PayQuick para testes de back-end",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
