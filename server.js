@@ -38,7 +38,7 @@ app.put('/v1/usuarios/:id', (req, res) => {
   
   if (usuario) {
     usuario.nome = req.body.nome || usuario.nome;
-    usuario.email = req.body.email; // Não valida se é um e-mail válido ou preenchido
+    usuario.email = req.body.email;
   }
   
   return res.status(200).json(usuario);
@@ -49,7 +49,6 @@ app.delete('/v1/usuarios/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const usuario = usuarios.find(u => u.id === id);
   
-  // Se usuário não existir, 'usuario.nome' lança exceção não tratada (TypeError)
   return res.status(200).json({ mensagem: `Usuário ${usuario.nome} removido com sucesso` });
 });
 
@@ -67,7 +66,6 @@ app.post('/v1/pagamentos', (req, res) => {
 
 // 6. GET /v1/pagamentos - Listar pagamentos
 app.get('/v1/pagamentos', (req, res) => {
-  // Ignora req.query.status
   return res.status(200).json(pagamentos);
 });
 
@@ -77,7 +75,7 @@ app.put('/v1/pagamentos/:id', (req, res) => {
   const pagamento = pagamentos.find(p => p.id === id);
   
   if (pagamento) {
-    pagamento.status = req.body.status; // Aceita qualquer string
+    pagamento.status = req.body.status;
   }
   
   return res.status(200).json(pagamento);
